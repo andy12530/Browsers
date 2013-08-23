@@ -1,0 +1,29 @@
+extends layout
+
+block container
+    .row
+        .col-lg-12
+          .page-header
+            h1 执行测试
+          #info
+          #exec
+            h3 执行测试
+            .well
+              form.form-horizontal
+                fieldset
+                  legend 提交测试用例
+                  .form-group
+                    label.col-lg-2.control-label(for='URI') 测试用例URL：
+                    .col-lg-6
+                        input#URI.form-control(type='url', placeholder='测试用例URL', required='required')
+                        input#clients(type='hidden', value='#{clients}')
+                    .col-lg-offset-2
+                      button#submit.btn.btn-primary(type='submit', data-loading-text="运行中...") 提交
+          #reporter
+            h3 测试概况报告
+            #report-title
+            #report-content
+
+                
+block footscript
+    script(src='js/execScript.js')

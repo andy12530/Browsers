@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mocha</title>
+<link rel="stylesheet" href="mocha/mocha.css">
+<script src="mocha/mocha.js"></script>
+<script>mocha.setup('bdd')</script>
+<script>
+  function assert(expr, msg) {
+    if (!expr) throw new Error(msg || 'failed');
+  }
+</script>
+</head>
+<body>
+    <div id="mocha"></div>
+</body>
+<script src="array.js"></script>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.js"></script>
+<script>
+var browserId = 'browser' + (new Date().getTime() + "").slice(8);
+
+$(function() {
+    var runner = mocha.run();
+    var tests = [], failures = [], passes = [];
+
+    function clean(test) {
+        return {
+          title: test.title, 
+          fullTitle: test.fullTitle(), 
+          duration: test.duration
+        }
+    }
+
+    runner.on('test end', function(test){
+        tests.push(test);
+    });
+
+    runner.on('pass', function(test){
+        passes.push(test);
+    });
+
+    runner.on('fail', function(test){
+        failures.push(test);
+    });
+
+    runner.on('end', function(){
+        var testsData = {
+            ua: navigator.userAgent,
+            browserId: browserId,
+            stats: runner.stats,
+            tests: $.map(tests, clean),
+            failures: $.map(failures, clean),
+            passes: $.map(passes, clean)
+        };
+        if(/id=/.test(location.search)) {
+            $.post('http://192.168.37.204:4573/status', testsData, function(data) {
+                data = null;
+            })
+        }
+    });
+});
+</script>
+</html>

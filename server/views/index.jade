@@ -1,0 +1,25 @@
+extends layout
+
+block container
+    .row
+        .col-lg-12
+          .page-header
+            h1 浏览器状态
+          div#clients
+            each client in clients
+              p 客户端IP：#{client}
+              table.client.table.table-striped.table-bordered.table-hover(data-client='#{client}')
+                thead
+                  tr
+                    th #
+                    th.item-platform 名称及平台
+                    th.item-status 当前状态
+                    th.item-memory 内存占用
+                    th.item-action 操作
+                tbody
+                tfoot
+                  tr
+                    td 系统内存信息
+                    td.memory(colspan='4') Loading......
+block footscript
+    script(src='js/index.js')

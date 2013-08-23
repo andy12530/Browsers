@@ -1,0 +1,30 @@
+!!! 5
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title #{title}
+    link(rel='stylesheet', href='css/flatly.min.css')
+    link(rel='stylesheet', href='css/index.css')
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') 浏览器监控模块
+        .navbar-collapse
+          ul.nav.navbar-nav
+            li(class='#{className[0]}')
+              a(href='/run') 执行测试
+            li(class='#{className[1]}')
+              a(href='/reporter') 查看报告
+    .container(style="padding-top:40px;")
+        block container
+    
+  script(src='js/jquery2.0.min.js')
+  script(src='js/underscore.js')
+  script(src='js/socket.io.js')
+  script(src='js/bootstrap.min.js')
+  block footscript

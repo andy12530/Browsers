@@ -1,0 +1,20 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "rimraf": "~2.1.4",
+    "colorful": "~1.2.0",
+    "commander": "~1.1.1",
+    "async": "~0.2.7",
+    "express": "~3.x",
+    "socket.io": "~0.9.x",
+    "socket.io-client": "~0.9.11",
+    "when": "~2.0.1",
+    "little-logger": "*",
+    "useragent": "~2.0.4"
+  }
+}

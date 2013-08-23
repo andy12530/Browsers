@@ -1,0 +1,6 @@
+{
+    "port": 9997,
+	"timeout": 50000,
+	"manager": false,
+	"maxMemory": 1024
+}

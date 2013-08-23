@@ -1,0 +1,12 @@
+table .item-platform {
+    width: 35%;
+}
+table .item-status {
+    width: 15%;
+}
+table .item-memory{
+    width: 10%;
+}
+table .item-action{
+    width: 26%;
+}

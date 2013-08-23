@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+var path = require('path'),
+    fs = require('fs'),
+    commander = require('commander'),
+    browsers = require('../lib/browsers'),
+    common = require('totoro-common'),
+    pkgStr = fs.readFileSync(path.join(module.filename, '../../package.json')),
+    pkg = JSON.parse(pkgStr);
+
+var color = require('colorful').color;
+
+function splitStr(val) {
+    return val.split(',');
+}
+
+commander
+    .version(pkg.version)
+    .usage('[options]')
+    .option('-c, --capture [capture url]', '默认浏览器打开的地址: [capture]')
+    .option('-p, --port [local port]', '本地服务默认端口号(9997): [port]')
+    .option('--verbose', '显示调试信息')
+    .option('--browsers [browsers name]', '指定启动的浏览器', splitStr)
+    .option('-V, --version', '显示当前版本号');
+
+commander.parse(process.argv)
+
+//处理-v参数
+if(commander.rawArgs.length === 3 && commander.rawArgs[2] === '-V') {
+    var pkgFile = path.join(__dirname, '..', 'package.json');
+    var version = JSON.parse(fs.readFileSync(pkgFile)).version;
+    console.info(color.green(version));
+    process.exit(0);
+}
+
+browsers.run(common.getCfg(commander));
