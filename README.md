@@ -1,17 +1,18 @@
-##Browser模块
-###简介
+## Browser模块
+### 简介
 一个简单的前端自动化测试工具。服务端发送测试用例url，在真实的浏览器中运行测试用例，实时反馈测试结果，收集测试报告并显示测试结果概况；服务端可以管理各浏览器，实现重启与关闭。
 
-###安装
+### 安装
 * Node.JS最新版
 * 安装模块依赖 
 * * 下载代码并解压，进入browsers目录，运行：<code>npm install</code>;
 * * 进入browsers/server目录，运行：<code>npm install</code>;
 
-###客户端配置
+### 客户端配置
 * 打开<code>browsers-config.json</code>文件可以修改监听端口，默认为9997；
 * 打开<code>lib/launchers</code>目录下的Chrome,js, IE.js，修改浏览器的安装位置：
-``` javascript
+
+```javascript
 helper.extend(ChromeBrowser.prototype, {
   name: 'Chrome',
   DEFAULT_CMD: {
@@ -22,7 +23,7 @@ helper.extend(ChromeBrowser.prototype, {
   ENV_CMD: 'CHROME_BIN'
 })
 ```
-###服务端配置
+### 服务端配置
 * 文件<code>server/server-config.json</code>文件用来配置服务端，其中服务端默认监听端口为4573， clients为客户端的IP地址，mongo为MongoDB连接地址。
 
 ### 快速上手
