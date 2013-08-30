@@ -47,5 +47,5 @@ helper.extend(ChromeBrowser.prototype, {
 ![测试用例运行界面][2]
 
 
-  [1]: http://git.corp.ganji.com/zhangbingbing/browsers/raw/master/img/1.png
-  [2]: http://git.corp.ganji.com/zhangbingbing/browsers/raw/master/img/2.png
+  [1]: https://raw.github.com/andy12530/Browsers/master/img/1.png
+  [2]: https://raw.github.com/andy12530/Browsers/master/img/2.png
