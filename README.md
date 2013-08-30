@@ -38,5 +38,5 @@ helper.extend(ChromeBrowser.prototype, {
 ![测试用例运行界面][2]
 
 
-  [1]: http://stacdn201.ganjistatic1.com/src/att/adm/gg/btm20130711d.png
-  [2]: http://stacdn201.ganjistatic1.com/src/att/adm/gg/btm20130711d.png
+  [1]: http://git.corp.ganji.com/zhangbingbing/browsers/raw/master/img/1.png
+  [2]: http://git.corp.ganji.com/zhangbingbing/browsers/raw/master/img/2.png

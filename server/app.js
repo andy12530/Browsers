@@ -28,6 +28,7 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/run', routes.run);
+app.post('/addTest', routes.addTest);
 app.post('/status', routes.status);
 
 
@@ -46,8 +47,4 @@ io.of('/report').on('connection', function (socket) {
     reportServer.push(socket);
     app.set('reportServer', reportServer);
 
-    socket.on('openNum', function(data) {
-        app.set("openNum", data.openNum);
-        console.log(data);
-    });
 });

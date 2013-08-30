@@ -58,22 +58,25 @@ $('#submit').on('click', function(e) {
         reportIo = io.connect(location.protocol + '//' + location.host + '/report');
     }
 
-    var capture = $('#URI').val();
+    var capture = $('#URI').val(),
+        email = $('#email').val();
 
-    //每次都会重新启动所有浏览器
-    openNum = 0;
-    $.each(clients, function(index) {
-        var url = 'http://' + clients[index] +':9997/restart?callback=?';
-        $.getJSON(url, {capture: capture}, function(data) {
-            if(data.succ) {
-                openNum += data.num;
-            }
-            reportIo.emit('openNum', {openNum: openNum});
-        });
+    if(!capture || !email) {
+        return false;
+    }
+
+    var postData = {
+        createTime: new Date().getTime(),
+        url: capture,
+        email: [email]
+    };
+
+    $.post('/addTest', postData, function(data) {
+        if(data.succ) {
+            var title = $('<p>当前测试地址为：<a href="'+ capture +'" target="_blank">'+ capture +'</a></p>');
+            $reportTitle.append(title);
+        }
     });
-
-    var title = $('<p>当前测试地址为：<a href="'+ capture +'" target="_blank">'+ capture +'</a></p>');
-    $reportTitle.append(title);
 });
 reportIo = io.connect(location.protocol + '//' + location.host + '/report');
 reportIo.on('report', function(data) {
